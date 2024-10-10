@@ -69,10 +69,7 @@ const Parallax2 = () => {
       <section>
         <div id="hero" className="bg">
           <video autoPlay muted loop id="heroVideo">
-            <source
-              src="/public/5495781-uhd_2560_1080_30fps.mp4"
-              type="video/mp4"
-            />
+            <source src="./5495781-uhd_2560_1080_30fps.mp4" type="video/mp4" />
           </video>
           <div className="hero-content">
             <h1 className="hero-text title">VASU SINGLA</h1>
