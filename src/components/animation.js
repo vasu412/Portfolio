@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 const animation = () => {
   gsap.registerPlugin(ScrollTrigger);
-
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   // Hero text animation on page load
   gsap.fromTo(
     ".hero-text",
@@ -57,30 +57,6 @@ const animation = () => {
         },
       }
     );
-
-    // Animation for section content when scrolled into view
-    const otherContent = section.querySelector(".other-content");
-
-    if (otherContent) {
-      gsap.fromTo(
-        otherContent,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 20%", // Adjust start position for triggering animation
-            end: "top 100%",
-            toggleActions: "play none none reverse", // Triggers animation when entering and leaving the viewport
-            // scrub: true,
-            // markers: true,
-          },
-        }
-      );
-    }
   });
 };
 

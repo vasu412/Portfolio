@@ -1,19 +1,8 @@
-import { gsap } from "gsap";
-import React, { useEffect } from "react";
-import animation from "./animation";
+import React from "react";
 
 const Socials = ({ setSocial }) => {
-  useEffect(() => {
-    gsap.fromTo(
-      ".other-content",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.2 }
-    );
-    animation();
-  }, []);
-
   return (
-    <div className="subSections other-content">
+    <div className="subSections">
       <a href="#socials">
         <div className="circle" onClick={() => setSocial(false)}>
           <i className=" material-icons">remove</i>

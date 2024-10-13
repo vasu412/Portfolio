@@ -14,13 +14,10 @@ const Parallax2 = () => {
 
   useEffect(() => {
     animation();
-  }, []);
-
-  // useEffect(() => {
-  //   if (skill || project || social) {
-  //     ScrollTrigger.refresh(); // Manually refresh GSAP ScrollTrigger after sections are updated
-  //   }
-  // }, [skill, project, social]);
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100); // Small delay to ensure layout has fully rendered before refresh
+  }, [skill, project, social]);
 
   useEffect(() => {
     if (header) {
@@ -81,11 +78,7 @@ const Parallax2 = () => {
         </div>
       </section>
       <section>
-        <div
-          className="bg"
-          id="skills"
-          //  style={{ filter: "grayscale(1)" }}
-        ></div>
+        <div className="bg" id="skills"></div>
         <div className="other-content">
           <h1 className="hero-text title">SKILLS</h1>
           <a href="#skill-section">
@@ -97,9 +90,10 @@ const Parallax2 = () => {
       </section>
 
       {skill && (
-        <div id="skill-section">
+        <section id="skill-section">
+          <div className="bg"></div>
           <Skills setSkill={setSkill} />
-        </div>
+        </section>
       )}
 
       <section>

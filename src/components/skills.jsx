@@ -2,12 +2,8 @@ import React, { useEffect } from "react";
 import animation from "./animation";
 
 const Skills = ({ setSkill }) => {
-  useEffect(() => {
-    animation();
-  }, []);
-
   return (
-    <div className="subSections hero-text">
+    <div className="subSections ">
       <a href="#skills">
         <div className="circle" onClick={() => setSkill(false)}>
           <i className=" material-icons">remove</i>
