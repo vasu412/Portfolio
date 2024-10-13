@@ -1,19 +1,17 @@
-import React, { useEffect } from "react";
-import animation from "./animation";
+import React from "react";
 
 const Project = ({ setProject }) => {
-  // useEffect(() => {
-  //   animation();
-  // }, []);
-
   return (
     <div className="subSections ">
       <a href="#projects">
-        <div className="circle" onClick={() => setProject(false)}>
-          <i className=" material-icons">remove</i>
-        </div>
+        <i
+          className="hero-text material-icons"
+          style={{ fontSize: "30px" }}
+          onClick={() => setProject(false)}>
+          keyboard_arrow_up
+        </i>
       </a>
-      <div className="projectBoxes">
+      <div className="projectBoxes hero-text">
         <div className="singleProject">
           <div className="projectSubBoxes">
             <a href="https://vasu412.github.io/Geekathon/" target="blank">

@@ -3,14 +3,7 @@ import { ScrollTrigger } from "gsap/all";
 const animation = () => {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  // Hero text animation on page load
-  gsap.fromTo(
-    ".hero-text",
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.4 }
-  );
 
-  // Parallax effect for hero video
   gsap.fromTo(
     "#heroVideo",
     { scale: 1.1 },
@@ -26,7 +19,6 @@ const animation = () => {
     }
   );
 
-  // Apply parallax effect and animations to sections
   gsap.utils.toArray("section").forEach((section, i) => {
     const bg = section.querySelector(".bg");
 

@@ -93,6 +93,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .bg {
@@ -106,6 +107,7 @@ section {
   background-repeat: no-repeat;
   filter: brightness(1);
   min-height: 100vh;
+  z-index: -1;
 }
 
 .header-content {
@@ -313,4 +315,12 @@ section {
   margin-right: 30px;
   text-decoration: underline;
   font-size: 20px;
+}
+
+.bg.hidden {
+  display: none; /* Make hidden sections non-interactive */
+}
+
+.bg.active {
+  display: block; /* Ensure the active section is visible */
 }

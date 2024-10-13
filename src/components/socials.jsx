@@ -4,11 +4,14 @@ const Socials = ({ setSocial }) => {
   return (
     <div className="subSections">
       <a href="#socials">
-        <div className="circle" onClick={() => setSocial(false)}>
-          <i className=" material-icons">remove</i>
-        </div>
+        <i
+          className="hero-text material-icons"
+          style={{ fontSize: "30px" }}
+          onClick={() => setSocial(false)}>
+          keyboard_arrow_up
+        </i>
       </a>
-      <div className="boxes">
+      <div className="boxes hero-text">
         <div
           className="github box"
           onClick={() => window.open("https://github.com/dashboard", "_blank")}>

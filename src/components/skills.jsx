@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
-import animation from "./animation";
+import React from "react";
+import { Link } from "react-scroll";
 
 const Skills = ({ setSkill }) => {
   return (
     <div className="subSections ">
-      <a href="#skills">
-        <div className="circle" onClick={() => setSkill(false)}>
-          <i className=" material-icons">remove</i>
-        </div>
-      </a>
-      <div className="skillBoxes">
+      <Link to="skills" smooth={true} duration={300}>
+        <i
+          className="hero-text material-icons"
+          style={{ fontSize: "30px" }}
+          onClick={() => setSkill(false)}>
+          keyboard_arrow_up
+        </i>
+      </Link>
+      <div className="skillBoxes hero-text">
         <div className="imgBox">
           <img src="https://skillicons.dev/icons?i=java" alt="" />
           <h1>JAVA</h1>

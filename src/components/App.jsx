@@ -5,18 +5,25 @@ import animation from "./animation";
 import Socials from "./socials";
 import Project from "./project";
 import Skills from "./skills";
+import { Element, Link } from "react-scroll";
 
 const Parallax2 = () => {
   const [header, setHeader] = useState(false);
   const [skill, setSkill] = useState(false);
   const [project, setProject] = useState(false);
   const [social, setSocial] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    gsap.fromTo(
+      ".hero-text",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 3, ease: "power3.out", delay: 0.6 }
+    );
+  }, []);
 
   useEffect(() => {
     animation();
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100); // Small delay to ensure layout has fully rendered before refresh
   }, [skill, project, social]);
 
   useEffect(() => {
@@ -29,6 +36,39 @@ const Parallax2 = () => {
     }
   }, [header]);
 
+  const handleSectionChange = (setStateCallback, nextSectionId) => {
+    if (isTransitioning) return; // Prevent multiple clicks during transition
+    setIsTransitioning(true);
+
+    const currentSection = document.querySelector(".bg"); // Get current active section
+    const nextSection = document.getElementById(nextSectionId); // Get next section by ID
+
+    if (!currentSection || !nextSection) {
+      console.error("Target section(s) not found");
+      setIsTransitioning(false);
+      return; // Exit if sections are not found
+    }
+
+    // Animate the current section sliding out
+    gsap.to(currentSection, {
+      duration: 0.5,
+      onComplete: () => {
+        setStateCallback(true);
+        gsap.fromTo(
+          nextSection,
+          { x: "100%" },
+          {
+            x: "0%",
+            duration: 0.5,
+            onComplete: () => {
+              setIsTransitioning(false); // Allow transitions again
+            },
+          }
+        );
+      },
+    });
+  };
+
   return (
     <>
       {header && (
@@ -39,21 +79,21 @@ const Parallax2 = () => {
             close
           </i>
           <div className="header-content">
-            <a href="#">
+            <Link to="hero" smooth={true} duration={500}>
               <span>HOME</span>
-            </a>
-            <a href="#skills">
+            </Link>
+            <Link to="skills" smooth={true} duration={500}>
               <span>SKILLS</span>
-            </a>
-            <a href="#projects">
+            </Link>
+            <Link to="projects" smooth={true} duration={500}>
               <span>PROJECTS</span>
-            </a>
-            <a href="#socials">
+            </Link>
+            <Link to="socials" smooth={true} duration={500}>
               <span>SOCIALS</span>
-            </a>
-            <a href="#contact">
+            </Link>
+            <Link to="contact" smooth={true} duration={500}>
               <span>CONTACT</span>
-            </a>
+            </Link>
           </div>
         </div>
       )}
@@ -63,84 +103,119 @@ const Parallax2 = () => {
         style={{ display: `${!header ? "block" : "none"}` }}>
         menu
       </i>
-      <section>
-        <div id="hero" className="bg">
-          <video autoPlay muted loop id="heroVideo">
-            <source src="./5495781-uhd_2560_1080_30fps.mp4" type="video/mp4" />
-          </video>
-          <div className="hero-content">
-            <h1 className="hero-text title">VASU SINGLA</h1>
-            <h2 className="hero-text subtitle">A FULL STACK WEB DEVELOPER</h2>
-            <a href="#skills">
-              <i className="hero-text material-icons">keyboard_arrow_down</i>
-            </a>
+
+      <Element name="hero">
+        <section>
+          <div id="hero" className="bg">
+            <video autoPlay muted loop id="heroVideo">
+              <source
+                src="./5495781-uhd_2560_1080_30fps.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div className="hero-content">
+              <h1 className="hero-text title">VASU SINGLA</h1>
+              <h2 className="hero-text subtitle">A FULL STACK WEB DEVELOPER</h2>
+              <Link to="skills" smooth={true} duration={500}>
+                <i className="hero-text material-icons">keyboard_arrow_down</i>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-      <section>
-        <div className="bg" id="skills"></div>
-        <div className="other-content">
-          <h1 className="hero-text title">SKILLS</h1>
-          <a href="#skill-section">
-            <div className="circle hero-text" onClick={() => setSkill(true)}>
-              <i className=" material-icons">add</i>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      {skill && (
-        <section id="skill-section">
-          <div className="bg"></div>
-          <Skills setSkill={setSkill} />
         </section>
-      )}
+      </Element>
 
-      <section>
-        <div className="bg" id="projects"></div>
-        <div className="other-content">
-          <h1 className="hero-text title">PROJECTS</h1>
-          <a href="#project-section">
-            <div className="circle hero-text" onClick={() => setProject(true)}>
-              <i className=" material-icons">add</i>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      {project && (
-        <section id="project-section">
-          <Project setProject={setProject} />
-        </section>
-      )}
-
-      <section>
-        <div className="bg" id="socials"></div>
-        <div className="other-content">
-          <h1 className="hero-text title">SOCIALS</h1>
-          <a href="#social-section">
-            <div className="circle hero-text" onClick={() => setSocial(true)}>
-              <i className=" material-icons">add</i>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      {social && (
-        <section id="social-section">
-          <Socials setSocial={setSocial} />
-        </section>
-      )}
-
-      <section>
-        <div className="bg" id="contact"></div>
-        <div className="other-content">
-          <h1 className="hero-text title">CONTACT</h1>
-          <div className="circle hero-text">
-            <i className=" material-icons">add</i>
+      <Element name="skills">
+        <section>
+          <div className="bg" id="skills"></div>
+          <div className="other-content">
+            <h1 className="hero-text title">SKILLS</h1>
+            <Link to="skill-section" smooth={true} duration={500}>
+              <i
+                className="hero-text material-icons"
+                style={{ fontSize: "30px" }}
+                onClick={() => handleSectionChange(setSkill, "skill-section")}>
+                keyboard_arrow_down
+              </i>
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </Element>
+
+      <Element name="skill-section" id="skill-section">
+        {skill && (
+          <section>
+            <Skills setSkill={setSkill} skill={skill} />
+          </section>
+        )}
+      </Element>
+
+      <Element name="projects">
+        <section>
+          <div className="bg" id="projects"></div>
+          <div className="other-content">
+            <h1 className="hero-text title">PROJECTS</h1>
+            <Link to="project-section" smooth={true} duration={500}>
+              <i
+                className="hero-text material-icons"
+                style={{ fontSize: "30px" }}
+                onClick={() =>
+                  handleSectionChange(setProject, "project-section")
+                }>
+                keyboard_arrow_down
+              </i>
+            </Link>
+          </div>
+        </section>
+      </Element>
+
+      <Element name="project-section" id="project-section">
+        {project && (
+          <section>
+            <Project setProject={setProject} />
+          </section>
+        )}
+      </Element>
+
+      <Element name="socials">
+        <section>
+          <div className="bg" id="socials"></div>
+          <div className="other-content">
+            <h1 className="hero-text title">SOCIALS</h1>
+            <Link to="social-section" smooth={true} duration={500}>
+              <i
+                className="hero-text material-icons"
+                style={{ fontSize: "30px" }}
+                onClick={() =>
+                  handleSectionChange(setSocial, "social-section")
+                }>
+                keyboard_arrow_down
+              </i>
+            </Link>
+          </div>
+        </section>
+      </Element>
+
+      <Element name="social-section" id="social-section">
+        {social && (
+          <section>
+            <Socials setSocial={setSocial} />
+          </section>
+        )}
+      </Element>
+
+      <Element name="contact">
+        <section>
+          <div className="bg" id="contact"></div>
+          <div className="other-content">
+            <h1 className="hero-text title">CONTACT</h1>
+            <i
+              className="hero-text material-icons"
+              style={{ fontSize: "30px" }}>
+              keyboard_arrow_down
+            </i>
+          </div>
+        </section>
+      </Element>
     </>
   );
 };
