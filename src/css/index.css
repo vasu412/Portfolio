@@ -5,6 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  user-select: none;
 }
 body {
   font-family: "Afacad Flux", sans-serif;
@@ -24,8 +25,8 @@ a {
   position: fixed;
   z-index: 999;
   top: 0;
-  background-color: #130d0a;
   transition: all 1s ease-in-out;
+  background-color: rgb(19, 18, 18);
 }
 
 #hero {
@@ -323,4 +324,53 @@ section {
 
 .bg.active {
   display: block; /* Ensure the active section is visible */
+}
+
+.contact-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem;
+  border: none;
+  border-bottom: 0.5px solid #ccc;
+  outline: none;
+  background-color: transparent;
+  color: #ccc;
+  resize: none;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+footer{
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 12.7px;
+  color: #ffffff76;
 }

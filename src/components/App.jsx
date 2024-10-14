@@ -6,6 +6,7 @@ import Socials from "./socials";
 import Project from "./project";
 import Skills from "./skills";
 import { Element, Link } from "react-scroll";
+import Contact from "./contact";
 
 const Parallax2 = () => {
   const [header, setHeader] = useState(false);
@@ -214,17 +215,16 @@ const Parallax2 = () => {
 
       <Element name="contact">
         <section>
-          <div className="bg" id="contact"></div>
-          <div className="other-content">
-            <h1 className="hero-text title">CONTACT</h1>
-            <i
-              className="hero-text material-icons"
-              style={{ fontSize: "30px" }}>
-              keyboard_arrow_down
-            </i>
-          </div>
+          <Contact />
         </section>
       </Element>
+
+      <footer>
+        <p>
+          &copy; 2024 Vasu Singla. All rights reserved. | Designed and built by
+          Vasu Singla.
+        </p>
+      </footer>
     </>
   );
 };
