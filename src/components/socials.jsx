@@ -57,6 +57,16 @@ const Socials = ({ setSocial }) => {
           />
           <span>INSTAGRAM : @_vasu.singla</span>
         </div>
+        <div
+          className="resume box"
+          onClick={() =>
+            window.open("https://www.instagram.com/_vasu.singla/", "_blank")
+          }>
+          <img
+            src="https://images.pexels.com/photos/5598289/pexels-photo-5598289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

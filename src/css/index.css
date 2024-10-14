@@ -29,6 +29,10 @@ a {
   background-color: rgb(19, 18, 18);
 }
 
+.header-content span {
+  cursor: pointer;
+}
+
 #hero {
   position: relative;
   height: 100vh;
@@ -163,11 +167,12 @@ section {
 .boxes {
   display: grid;
   grid-template-columns: repeat(2, 550px);
-  grid-template-rows: repeat(3, 260px);
+  grid-template-rows: repeat(4, 280px);
   grid-template-areas:
-    "github linkedin"
-    "github instagram"
-    "slack instagram";
+    "github linkedin "
+    "github instagram "
+    "slack instagram"
+    "resume resume";
   gap: 40px;
   cursor: pointer;
 }
@@ -198,6 +203,14 @@ section {
 
 .instagram {
   grid-area: instagram;
+}
+
+.resume {
+  grid-area: resume;
+}
+
+.slack2 {
+  grid-area: slack2;
 }
 
 .box span {
@@ -367,7 +380,7 @@ section {
   margin-bottom: 15px;
 }
 
-footer{
+footer {
   margin-bottom: 10px;
   text-align: center;
   text-decoration: underline;
