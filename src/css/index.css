@@ -10,7 +10,7 @@ body {
   font-family: "Afacad Flux", sans-serif;
   color: #fff;
   /* background-color: #130d0a; */
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(19, 18, 18);
 }
 a {
   text-decoration: none;
@@ -144,19 +144,19 @@ section {
 }
 
 #skills {
-  background-image: url("https://images.unsplash.com/photo-1606594914767-d6bfbde9a0e9?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  filter: grayscale(1);
+  background-image: url("https://images.unsplash.com/photo-1505238680356-667803448bb6?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  filter: brightness(70%);
 }
 
 #projects {
-  background-image: url("https://images.unsplash.com/photo-1612058633399-49246186dbe0?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  filter: contrast(0.9);
+  background-image: url("https://images.unsplash.com/photo-1607798748738-b15c40d33d57?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  filter: brightness(80%);
 }
 
 #socials {
-  background-image: url("https://images.pexels.com/photos/7634159/pexels-photo-7634159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-image: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  filter: brightness(80%) blur(1px);
   min-height: 100vh;
-  height: auto;
 }
 
 .boxes {

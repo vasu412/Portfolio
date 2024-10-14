@@ -116,15 +116,24 @@ const Parallax2 = () => {
             <div className="hero-content">
               <h1 className="hero-text title">VASU SINGLA</h1>
               <h2 className="hero-text subtitle">A FULL STACK WEB DEVELOPER</h2>
-              <Link to="skills" smooth={true} duration={500}>
-                <i className="hero-text material-icons">keyboard_arrow_down</i>
-              </Link>
             </div>
           </div>
+          <Link to="skill" smooth={true} duration={500}>
+            <i
+              className="hero-text material-icons"
+              style={{
+                position: "absolute",
+                zIndex: "999",
+                top: "520px",
+                left: "700px",
+              }}>
+              keyboard_arrow_down
+            </i>
+          </Link>
         </section>
       </Element>
 
-      <Element name="skills">
+      <Element name="skill">
         <section>
           <div className="bg" id="skills"></div>
           <div className="other-content">
