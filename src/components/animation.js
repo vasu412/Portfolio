@@ -1,5 +1,45 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+
+export const handleSectionChange = (
+  setStateCallback,
+  nextSectionId,
+  val,
+  isTransitioning,
+  setIsTransitioning
+) => {
+  if (isTransitioning) return; // Prevent multiple clicks during transition
+  setIsTransitioning(true);
+  console.log(setIsTransitioning);
+  const currentSection = document.querySelector(".bg"); // Get current active section
+  const nextSection = document.getElementById(nextSectionId); // Get next section by ID
+
+  if (!currentSection || !nextSection) {
+    console.error("Target section(s) not found");
+    setIsTransitioning(false);
+    return; // Exit if sections are not found
+  }
+
+  // Animate the current section sliding out
+  gsap.to(currentSection, {
+    duration: 0.5,
+    onComplete: () => {
+      setStateCallback(val);
+      gsap.fromTo(
+        nextSection,
+        { x: "100%" },
+        {
+          x: "0%",
+          duration: 0.5,
+          onComplete: () => {
+            setIsTransitioning(false); // Allow transitions again
+          },
+        }
+      );
+    },
+  });
+};
+
 const animation = () => {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -44,7 +84,7 @@ const animation = () => {
           trigger: section,
           start: i === 0 ? "top top" : "top bottom",
           end: "bottom top",
-          scrub: 0.2,
+          scrub: true,
           invalidateOnRefresh: true,
         },
       }

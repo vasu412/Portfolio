@@ -1,16 +1,26 @@
 import React from "react";
+import { handleSectionChange } from "./animation";
+import { Link } from "react-scroll";
 
-const Project = ({ setProject }) => {
+const Project = ({ setProject, isTransitioning, setIsTransitioning }) => {
   return (
     <div className="subSections ">
-      <a href="#projects">
+      <Link to="projects" smooth={true} duration={300}>
         <i
           className="hero-text material-icons"
           style={{ fontSize: "30px" }}
-          onClick={() => setProject(false)}>
+          onClick={() =>
+            handleSectionChange(
+              setProject,
+              "hero",
+              false,
+              isTransitioning,
+              setIsTransitioning
+            )
+          }>
           keyboard_arrow_up
         </i>
-      </a>
+      </Link>
       <div className="projectBoxes hero-text">
         <div className="singleProject">
           <div className="projectSubBoxes">

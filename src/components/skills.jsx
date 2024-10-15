@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { handleSectionChange } from "./animation";
 
-const Skills = ({ setSkill }) => {
+const Skills = ({ setSkill, isTransitioning, setIsTransitioning }) => {
   return (
     <div className="subSections ">
       <Link to="skills" smooth={true} duration={300}>
         <i
           className="hero-text material-icons"
           style={{ fontSize: "30px" }}
-          onClick={() => setSkill(false)}>
+          onClick={() =>
+            handleSectionChange(
+              setSkill,
+              "hero",
+              false,
+              isTransitioning,
+              setIsTransitioning
+            )
+          }>
           keyboard_arrow_up
         </i>
       </Link>

@@ -1,16 +1,26 @@
 import React from "react";
+import { handleSectionChange } from "./animation";
+import { Link } from "react-scroll";
 
-const Socials = ({ setSocial }) => {
+const Socials = ({ setSocial, isTransitioning, setIsTransitioning }) => {
   return (
     <div className="subSections">
-      <a href="#socials">
+      <Link to="socials" smooth={true} duration={300}>
         <i
           className="hero-text material-icons"
           style={{ fontSize: "30px" }}
-          onClick={() => setSocial(false)}>
+          onClick={() =>
+            handleSectionChange(
+              setSocial,
+              "hero",
+              false,
+              isTransitioning,
+              setIsTransitioning
+            )
+          }>
           keyboard_arrow_up
         </i>
-      </a>
+      </Link>
       <div className="boxes hero-text">
         <div
           className="github box"

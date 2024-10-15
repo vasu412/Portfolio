@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import "../css/index.css";
-import animation from "./animation";
+import animation, { handleSectionChange } from "./animation";
 import Socials from "./socials";
 import Project from "./project";
 import Skills from "./skills";
@@ -36,39 +36,6 @@ const Parallax2 = () => {
       );
     }
   }, [header]);
-
-  const handleSectionChange = (setStateCallback, nextSectionId) => {
-    if (isTransitioning) return; // Prevent multiple clicks during transition
-    setIsTransitioning(true);
-
-    const currentSection = document.querySelector(".bg"); // Get current active section
-    const nextSection = document.getElementById(nextSectionId); // Get next section by ID
-
-    if (!currentSection || !nextSection) {
-      console.error("Target section(s) not found");
-      setIsTransitioning(false);
-      return; // Exit if sections are not found
-    }
-
-    // Animate the current section sliding out
-    gsap.to(currentSection, {
-      duration: 0.5,
-      onComplete: () => {
-        setStateCallback(true);
-        gsap.fromTo(
-          nextSection,
-          { x: "100%" },
-          {
-            x: "0%",
-            duration: 0.5,
-            onComplete: () => {
-              setIsTransitioning(false); // Allow transitions again
-            },
-          }
-        );
-      },
-    });
-  };
 
   return (
     <>
@@ -143,7 +110,15 @@ const Parallax2 = () => {
               <i
                 className="hero-text material-icons"
                 style={{ fontSize: "30px" }}
-                onClick={() => handleSectionChange(setSkill, "skill-section")}>
+                onClick={() =>
+                  handleSectionChange(
+                    setSkill,
+                    "skill-section",
+                    true,
+                    isTransitioning,
+                    setIsTransitioning
+                  )
+                }>
                 keyboard_arrow_down
               </i>
             </Link>
@@ -154,7 +129,12 @@ const Parallax2 = () => {
       <Element name="skill-section" id="skill-section">
         {skill && (
           <section>
-            <Skills setSkill={setSkill} skill={skill} />
+            <Skills
+              setSkill={setSkill}
+              isTransitioning={isTransitioning}
+              setIsTransitioning={setIsTransitioning}
+              skill={skill}
+            />
           </section>
         )}
       </Element>
@@ -169,7 +149,13 @@ const Parallax2 = () => {
                 className="hero-text material-icons"
                 style={{ fontSize: "30px" }}
                 onClick={() =>
-                  handleSectionChange(setProject, "project-section")
+                  handleSectionChange(
+                    setProject,
+                    "project-section",
+                    true,
+                    isTransitioning,
+                    setIsTransitioning
+                  )
                 }>
                 keyboard_arrow_down
               </i>
@@ -181,7 +167,11 @@ const Parallax2 = () => {
       <Element name="project-section" id="project-section">
         {project && (
           <section>
-            <Project setProject={setProject} />
+            <Project
+              setProject={setProject}
+              isTransitioning={isTransitioning}
+              setIsTransitioning={setIsTransitioning}
+            />
           </section>
         )}
       </Element>
@@ -196,7 +186,13 @@ const Parallax2 = () => {
                 className="hero-text material-icons"
                 style={{ fontSize: "30px" }}
                 onClick={() =>
-                  handleSectionChange(setSocial, "social-section")
+                  handleSectionChange(
+                    setSocial,
+                    "social-section",
+                    true,
+                    isTransitioning,
+                    setIsTransitioning
+                  )
                 }>
                 keyboard_arrow_down
               </i>
@@ -208,7 +204,11 @@ const Parallax2 = () => {
       <Element name="social-section" id="social-section">
         {social && (
           <section>
-            <Socials setSocial={setSocial} />
+            <Socials
+              setSocial={setSocial}
+              isTransitioning={isTransitioning}
+              setIsTransitioning={setIsTransitioning}
+            />
           </section>
         )}
       </Element>
