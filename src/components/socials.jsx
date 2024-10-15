@@ -58,15 +58,28 @@ const Socials = ({ setSocial }) => {
           <span>INSTAGRAM : @_vasu.singla</span>
         </div>
         <div
-          className="resume box"
+          className="facebook box"
           onClick={() =>
-            window.open("https://www.instagram.com/_vasu.singla/", "_blank")
+            window.open(
+              "https://www.facebook.com/profile.php?id=100006889907007",
+              "_blank"
+            )
           }>
           <img
-            src="https://images.pexels.com/photos/5598289/pexels-photo-5598289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt=""
+            src="https://images.pexels.com/photos/20716651/pexels-photo-20716651/free-photo-of-facebook-logo-on-smartphone.jpeg?auto=compress&cs=tinysrgb&w=800"
+            style={{ filter: "grayscale(1)" }}
           />
+          <span>FACEBOOK</span>
         </div>
+        <a href="./resume.docx.pdf" download={"vasu's resume"}>
+          <div className="resume box">
+            <img
+              src="https://images.pexels.com/photos/5598289/pexels-photo-5598289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt=""
+            />
+            <span>RESUME</span>
+          </div>
+        </a>
       </div>
     </div>
   );

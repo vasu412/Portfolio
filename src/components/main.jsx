@@ -5,6 +5,8 @@ import "../css/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <div className="scroll-wrapper">
+      <App />
+    </div>
   </StrictMode>
 );

@@ -10,9 +10,9 @@
 body {
   font-family: "Afacad Flux", sans-serif;
   color: #fff;
-  /* background-color: #130d0a; */
   background-color: rgb(19, 18, 18);
 }
+
 a {
   text-decoration: none;
   color: #fff;
@@ -60,10 +60,6 @@ a {
   text-align: center;
   z-index: 2;
 }
-
-/* .hero-text {
-  opacity: 0;
-} */
 
 .title {
   font-size: 130px;
@@ -165,72 +161,44 @@ section {
 }
 
 .boxes {
-  display: grid;
-  grid-template-columns: repeat(2, 550px);
-  grid-template-rows: repeat(4, 280px);
-  grid-template-areas:
-    "github linkedin "
-    "github instagram "
-    "slack instagram"
-    "resume resume";
-  gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin: 0 100px;
 }
 
-.boxes div {
+.box{
   position: relative;
 }
 
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.box img{
+  height: 300px;
+  width: 350px;
+}
+
+.box{
   overflow: hidden;
-  /* padding: 20px; */
+  height: 300px;
+  width: 350px;
 }
 
-.github {
-  grid-area: github;
-}
-
-.linkedin {
-  grid-area: linkedin;
-}
-
-.slack {
-  grid-area: slack;
-}
-
-.instagram {
-  grid-area: instagram;
-}
-
-.resume {
-  grid-area: resume;
-}
-
-.slack2 {
-  grid-area: slack2;
+.facebook img{
+  height: 300px;
+  width: 380px;
 }
 
 .box span {
   position: absolute;
-  font-size: 40px;
+  font-size: 20px;
   letter-spacing: 2px;
   font-weight: 500;
-  top: 45%;
+  bottom: 10px;
+  left: 9px;
   opacity: 0;
   z-index: 99;
-}
-
-.box img {
-  height: 100%;
-  width: 110%;
-}
-
-.slack img,
-.linkedin img {
-  height: 120%;
 }
 
 .box img:hover {
